@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="css/bill_checklist.css" />
+
+        <script src="lib/angular.js"></script>
+        <script src="lib/ui-bootstrap-tpls-0.6.0.js"></script>
+        <script src="js/bill_checklist.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            Monthly Bills
+        </div>
+
+        <div ng-app="billChecklist">
+            <div ng-controller="billCtrl" triggerJQM>
+                <div class="bill-container">
+                    <div data-role="fieldcontain">
+                        <my-bills bills="getBills()" onDelete="deleteBill(id)"></my-bills>
+                    </div>
+                    <div class="new-bill-button">
+                        <button type="button" class="btn btn-primary" ng-click="addBill('new bill')">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Procastination == fines + penalties == less money
+        </div>
+
+        <button ng-click="showDialog()">Open dialog</button>
+    </body>
+</html>

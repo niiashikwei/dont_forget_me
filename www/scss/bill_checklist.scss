@@ -1,0 +1,50 @@
+.ui-state-highlight {
+    background-color: #EEEEEE;
+}
+
+.ui-dialog-contain {
+    width: 92.5%;
+    max-width: 500px;
+    margin: 10% auto 15px auto;
+    padding: 0;
+    position: relative;
+    top: -15px;
+}
+
+.bill-container{
+  background-color: grey;
+  width:100%;
+  padding: 3px 3px;
+  .bill{
+      text-align: left;
+      z-index: 1;
+      border: solid black 1px;
+      padding: 5px 5px 5px 15px;
+      width:100%;
+      .bill-checkbox{
+      }
+      .bill-name{
+        padding: 20px 20px
+      }
+      .bill-not-paid{
+        color:brown;
+      }
+      .bill-paid{
+        color:green;
+      }
+  }
+  .new-bill-button{
+    button{
+      width:100%;
+    }
+  }
+
+}
+
+.header, .footer{
+  text-align: center;
+  border: 1px solid black;
+  box-shadow: 5px;
+  padding: 10px;
+}
+
