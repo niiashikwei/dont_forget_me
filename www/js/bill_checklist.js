@@ -46,18 +46,7 @@ angular.module('billChecklist', ['ui.bootstrap'])
             }
           }
         });
-      },
-      showDialog:function($dialog){
-        var msg = 'Hello World!';
-        var options = {
-          resolve: {
-            msg: function () { return msg; }
-          }
-        };
-        var dialog = $dialog.dialog(options);
-
-        dialog.open('dialog.html', 'dialogCtrl');
-        }
+      }
     };
   })
   .directive('myBills', function ($log) {
@@ -87,7 +76,7 @@ angular.module('billChecklist', ['ui.bootstrap'])
       }
     };
   })
-  .controller('billCtrl', ['$scope', '$dialog', 'billsService', function($scope, $dialog, billsService){
+  .controller('billCtrl', ['$scope', 'billsService', function($scope, billsService){
 
     $scope.getBills = function() {
       return billsService.bills();
@@ -107,11 +96,4 @@ angular.module('billChecklist', ['ui.bootstrap'])
       return billsService.changeBillStatusClass(billStatus);
     };
 
-    $scope.showDialog = function () {
-      return billsService.showDialog($dialog)
-    };
-
   }])
-  .controller('dialogCtrl', function($scope, dialog, msg){
-    $scope.msg = msg;
-  });
