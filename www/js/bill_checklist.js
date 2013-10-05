@@ -27,6 +27,13 @@ angular.module('billChecklist', ['ui.bootstrap'])
           if (bill.id !== id) bills.push(bill);
         });
       },
+      updateBill:function (billName, newBillName) {
+        angular.forEach(bills, function (bill) {
+          if (bill.name == billName){
+            bill.name = newBillName
+          }
+        });
+      },
       changeBillStatusClass:function(id){
         console.log("got into method");
 
@@ -53,12 +60,28 @@ angular.module('billChecklist', ['ui.bootstrap'])
     var template =  "<fieldset class='bill-container' data-role='controlgroup'>" +
                       "<div ng-repeat='bill in bills' class=\"bill btn {{bill.paid=='true' && 'btn-success' || 'btn-danger'}}\">" +
                         "<my-bill delete='deleteBill(bill.id)' bill='bill'>" +
-                          "<input value='{{bill.paid}}' ng-click=\"updateBill\" checked=\"{{bill.paid=='true' && 'checked' || ''}}\" type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}' class='bill-checkbox' />" +
-                          "<label for='checkbox-{{bill.id}}'>" +
-                            "<span class='bill-name'>{{bill.name}}</span>" +
-                            "<span class=\"{{bill.paid=='true' && 'bill-paid' || 'bill-not-paid'}}\"><i>{{bill.status}}</i></span>" +
-                          "</label>" +
-                       "</my-bill>" +
+                          "<span class='bill-checkbox'>" +
+                            "<input value='{{bill.paid}}' ng-click=\"updateBill\" checked=\"{{bill.paid=='true' && 'checked' || ''}}\" type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}' />" +
+                          "</span>" +
+                          "<span>" +
+                            "<a class='clickable-bill' href='#bill-editor-{{bill.id}}'>" +
+                              "<label for='checkbox-{{bill.id}}'>" +
+                                "<span class='bill-name'>{{bill.name}}</span>" +
+                                "<span class=\"{{bill.paid=='true' && 'bill-paid' || 'bill-not-paid'}}\"><i>{{bill.status}}</i></span>" +
+                              "</label>" +
+                            "</a>" +
+                          "</span>" +
+                          "<div id='bill-editor-{{bill.id}}' style='display:none'>" +
+                            "<form novalidate class='simple-form'>" +
+                              "<h5>Edit Bill</h5>" +
+                              "<input type='text' ng-model='bill.name' /><br />" +
+                              "<div style='padding:5px; text-align:center;'>" +
+                                "<div><i><h7>some update message</h7></i></div>" +
+                                "<button class='btn btn-default delete-btn' ng-click='deleteBill(bill.id)'>DELETE</button>" +
+                              "</div>" +
+                            "</form>" +
+                          "</div>" +
+                        "</my-bill>" +
                       "</div>" +
                     "</fieldset>"
 
@@ -88,7 +111,11 @@ angular.module('billChecklist', ['ui.bootstrap'])
       }
     };
 
-    $scope.deleteBill = function() {
+    $scope.updateBill = function(billName, newBillName) {
+        billsService.editBill(billName, newBillName);
+    };
+
+    $scope.deleteBill = function(id) {
       billsService.deleteBill(id);
     };
 

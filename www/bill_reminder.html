@@ -74,6 +74,14 @@
                 'overlayShow'	:	false
             });
 
+            $(".clickable-bill").fancybox({
+                'hideOnContentClick': true
+            })
+
+            $(".delete-btn").click(function(){
+                $.fancybox.close();
+            });
+
         });
     </script>
 </html>
