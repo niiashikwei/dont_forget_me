@@ -25,8 +25,11 @@
       color: brown; }
     .bill-container .bill .bill-paid {
       color: green; }
-  .bill-container .new-bill-button button {
-    width: 100%; }
+  .bill-container .new-bill-button a {
+    width: 100%;
+    clear: left; }
+  .bill-container .new-bill-button #bill-adder-wrapper .btn {
+    text-align: center; }
 
 .header, .footer {
   text-align: center;

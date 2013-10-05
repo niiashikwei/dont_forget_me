@@ -53,7 +53,7 @@ angular.module('billChecklist', ['ui.bootstrap'])
     var template =  "<fieldset class='bill-container' data-role='controlgroup'>" +
                       "<div ng-repeat='bill in bills' class=\"bill btn {{bill.paid=='true' && 'btn-success' || 'btn-danger'}}\">" +
                         "<my-bill delete='deleteBill(bill.id)' bill='bill'>" +
-                          "<input value='{{bill.paid}}' checked=\"{{bill.paid=='true' && 'checked' || ''}}\" type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}' class='bill-checkbox' />" +
+                          "<input value='{{bill.paid}}' ng-click=\"updateBill\" checked=\"{{bill.paid=='true' && 'checked' || ''}}\" type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}' class='bill-checkbox' />" +
                           "<label for='checkbox-{{bill.id}}'>" +
                             "<span class='bill-name'>{{bill.name}}</span>" +
                             "<span class=\"{{bill.paid=='true' && 'bill-paid' || 'bill-not-paid'}}\"><i>{{bill.status}}</i></span>" +

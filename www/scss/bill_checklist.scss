@@ -34,8 +34,14 @@
       }
   }
   .new-bill-button{
-    button{
+    a{
       width:100%;
+      clear:left;
+    }
+    #bill-adder-wrapper{
+      .btn{
+        text-align: center;
+      }
     }
   }
 

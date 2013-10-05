@@ -7,10 +7,13 @@
 
         <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/bill_checklist.css" />
 
         <script src="lib/angular.js"></script>
         <script src="lib/ui-bootstrap-tpls-0.6.0.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.fancybox.pack.js"></script>
         <script src="js/bill_checklist.js"></script>
     </head>
 
@@ -26,7 +29,18 @@
                         <my-bills bills="getBills()" onDelete="deleteBill(id)"></my-bills>
                     </div>
                     <div class="new-bill-button">
-                        <button type="button" class="btn btn-primary" ng-click="addBill('new bill')">+</button>
+                        <a type="button" id="inline" href="#bill-adder" class="btn btn-primary">+</a>
+
+                        <div id="bill-adder" style="display:none">
+                            <form novalidate class="simple-form">
+                                <h5>Add New Bill</h5>
+                                <input type="text" ng-model="bill.name" /><br />
+                                <div style="padding:5px; text-align:center;">
+                                    <div><i><h7>some update message</h7></i></div>
+                                    <button class="btn btn-default bill-save-btn" ng-click="addBill(bill.name)">SAVE</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,4 +51,29 @@
         </div>
 
     </body>
+    <script>
+        $(document).ready(function() {
+
+            /* This is basic - uses default settings */
+
+            $("a#single_image").fancybox();
+
+            /* Using custom settings */
+
+            $("a#inline").fancybox({
+                'hideOnContentClick': true
+            });
+
+            /* Apply fancybox to multiple items */
+
+            $("a.group").fancybox({
+                'transitionIn'	:	'elastic',
+                'transitionOut'	:	'elastic',
+                'speedIn'		:	600,
+                'speedOut'		:	200,
+                'overlayShow'	:	false
+            });
+
+        });
+    </script>
 </html>
