@@ -38,7 +38,6 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
         updateLocalStorage();
       },
       updateBillStatus:function (id) {
-        console.log("hi");
         angular.forEach(bills, function (bill) {
           if (bill.id == id){
             if(bill.paid == true){
@@ -57,7 +56,7 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
                       "<div ng-repeat='bill in bills' class=\"bill btn\"  ng-class=\"{true:'btn-success', false:'btn-danger'}[bill.paid]\">" +
                         "<my-bill delete='deleteBill(bill.id)' bill='bill'>" +
                           "<span class='bill-checkbox'>" +
-                            "<input ng-change='updateBillStatus(id)' ng-model='bill.paid' ng-checked=\"{{bill.paid=='true' && 'checked' || ''}}\" type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}' />" +
+                            "<input ng-click='updateBillStatus(bill.id)' ng-model='bill.paid' checked='getCheckedStatus(bill.paid)' type='checkbox' name='checkbox-{{bill.id}}' id='checkbox-{{bill.id}}'  />" +
                           "</span>" +
                           "<span>" +
                             "<a class='clickable-bill' href='#bill-editor-{{bill.id}}'>" +
@@ -88,9 +87,21 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
         ondelete:'&'
       },
       template:template,
-      controller:function ($scope, $attrs) {
+      controller:function ($scope, billsService, $attrs) {
         $scope.deleteBill = function (id) {
           $scope.ondelete({id:id});
+        };
+
+        $scope.updateBillStatus = function(id){
+          billsService.updateBillStatus(id);
+        };
+
+        $scope.getCheckedStatus = function(paidStatus){
+          if (paidStatus=='true'){
+            return "checked";
+          }else{
+            return ""
+          }
         }
       }
     };
