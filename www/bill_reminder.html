@@ -28,6 +28,11 @@
             </div>
 
             <div ng-controller="billCtrl" id='content' triggerJQM>
+                <span id='controls'>
+                    <a type="button" ng-click='resetAllBillsStatus()' id="reset" style='width:33%' class="btn btn-primary">reset all</a>
+                    <a type="button" ng-click='setAllBillsPaid()' id="check-all" style='width:33%' class="btn btn-primary">check all</a>
+                    <a type="button" ng-click='deleteAllBills()' id="delete-all" style='width:33%' class="btn btn-primary">delete all</a>
+                </span>
                 <div class="bill-container">
                     <div data-role="fieldcontain">
                         <my-bills bills="getBills()" onDelete="deleteBill(id)"></my-bills>
@@ -39,7 +44,7 @@
                             <form novalidate class="bill-adder-form">
                                 <h5>Add New Bill</h5>
                                 <input type="text" ng-model="bill.name" /><br />
-                                <div style="padding:5px; text-align:center;">
+                                <div style="padding:5px; text-align:center; overflow:hidden;">
                                     <div><i><h7>some update message</h7></i></div>
                                     <button class="btn btn-default bill-save-btn" ng-click="addBill(bill.name)">SAVE</button>
                                 </div>

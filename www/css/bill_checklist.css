@@ -26,10 +26,10 @@ html {
         color: white;
         background-color: grey; }
       html body .bill-checklist #content {
-        height: 100%; }
+        height: 100%;
+        background-color: darkgray; }
         html body .bill-checklist #content .bill-container {
-          height: 100%;
-          background-color: darkgray; }
+          height: 100%; }
           html body .bill-checklist #content .bill-container .bill {
             text-align: left;
             z-index: 1;

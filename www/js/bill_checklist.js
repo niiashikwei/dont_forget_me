@@ -20,14 +20,16 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
       bills:function () {
         return bills;
       },
+
       addBill:function (billName) {
         console.log("hello");
         var currentIndex = bills.length + 1;
         bills.push({
-          id:currentIndex, name:billName, status:"not paid", paid:"false"
+          id:currentIndex, name:billName, status:"not paid", paid:false
         });
         updateLocalStorage();
       },
+
       deleteBill:function (id) {
         var oldBills = bills;
         bills = [];
@@ -37,18 +39,44 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
         });
         updateLocalStorage();
       },
+
       updateBillStatus:function (id) {
         angular.forEach(bills, function (bill) {
           if (bill.id == id){
             if(bill.paid == true){
-              bill.status = "paid"
+              bill.status = "paid";
             }else{
-              bill.status = "not paid"
+              bill.status = "not paid";
             }
           }
         });
         updateLocalStorage();
+      },
+      resetAllBillsStatus:function(){
+        angular.forEach(bills, function (bill) {
+          if(bill.paid == true){
+            bill.paid = false;
+            bill.status = "not paid";
+          }
+        });
+        updateLocalStorage();
+      },
+
+      setAllBillsPaid:function (){
+        angular.forEach(bills, function (bill) {
+          if(bill.paid == false){
+            bill.paid = true;
+            bill.status = "paid";
+          }
+        });
+        updateLocalStorage();
+      },
+
+      deleteAllBills:function (){
+        bills = [];
+        updateLocalStorage();
       }
+
     };
   })
   .directive('myBills', function ($log) {
@@ -125,4 +153,18 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
     $scope.updateBillStatus = function(id){
       billsService.updateBillStatus(id);
     };
+
+    $scope.resetAllBillsStatus = function(){
+      billsService.resetAllBillsStatus();
+    };
+
+
+    $scope.setAllBillsPaid = function(){
+      billsService.setAllBillsPaid();
+    };
+
+    $scope.deleteAllBills = function(){
+      billsService.deleteAllBills();
+    };
+
   }])
