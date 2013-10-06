@@ -62,7 +62,7 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
                             "<a class='clickable-bill' href='#bill-editor-{{bill.id}}'>" +
                               "<label for='checkbox-{{bill.id}}'>" +
                                 "<span class='bill-name'>{{bill.name}}</span>" +
-                                "<span class=\"{{bill.paid=='true' && 'bill-paid' || 'bill-not-paid'}}\" ng-bind='bill.status'></span>" +
+                                "<span ng-class=\"{true:'bill-paid', false:'bill-not-paid'}[bill.paid]\" ng-bind='bill.status'></span>" +
                               "</label>" +
                             "</a>" +
                           "</span>" +
@@ -102,7 +102,7 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
           }else{
             return ""
           }
-        }
+        };
       }
     };
   })
