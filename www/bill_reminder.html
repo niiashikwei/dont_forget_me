@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/bill_checklist.css" />
 
         <script src="lib/angular.js"></script>
+        <script src="lib/angular-local-storage.js"></script>
         <script src="lib/ui-bootstrap-tpls-0.6.0.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="lib/jquery.fancybox.pack.js"></script>
@@ -32,7 +33,7 @@
                         <a type="button" id="inline" href="#bill-adder" class="btn btn-primary">+</a>
 
                         <div id="bill-adder" style="display:none">
-                            <form novalidate class="simple-form">
+                            <form novalidate class="bill-adder-form">
                                 <h5>Add New Bill</h5>
                                 <input type="text" ng-model="bill.name" /><br />
                                 <div style="padding:5px; text-align:center;">
@@ -81,6 +82,10 @@
             $(".delete-btn").click(function(){
                 $.fancybox.close();
             });
+
+            $(".bill-save-btn").click(function(){
+                $('.bill-adder-form input').val("");
+            })
 
         });
     </script>
