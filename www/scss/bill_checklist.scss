@@ -12,8 +12,7 @@
 }
 
 .bill-container{
-  background-color: grey;
-  width:100%;
+  background-color: darkgray;
   padding: 3px 3px;
   .bill{
       text-align: left;
@@ -53,5 +52,8 @@
   border: 1px solid black;
   box-shadow: 5px;
   padding: 10px;
+  color: white;
+  background-color: grey;
 }
+
 
