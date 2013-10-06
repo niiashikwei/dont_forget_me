@@ -11,49 +11,58 @@
     top: -15px;
 }
 
-.bill-container{
-  background-color: darkgray;
-  padding: 3px 3px;
-  .bill{
-      text-align: left;
-      z-index: 1;
-      border: solid black 1px;
-      padding: 5px 5px 5px 15px;
-      width:100%;
-      .bill-checkbox{
-      }
-      .bill-name{
-        color: white;
-        padding: 20px 20px
-      }
-      .bill-not-paid{
-        color:brown;
-      }
-      .bill-paid{
-        color:green;
-      }
-  }
-  .new-bill-button{
-    a{
-      width:100%;
-      clear:left;
-    }
-    #bill-adder-wrapper{
-      .btn{
+html{
+  height:100%;
+  body{
+    height: calc(100% - 84px);
+    //overflow: hidden;
+    .bill-checklist{
+      height:100%;
+      #header, #footer{
         text-align: center;
+        border: 1px solid black;
+        box-shadow: 5px;
+        padding: 10px;
+        color: white;
+        background-color: grey;
+      }
+      #content{
+        height:100%;
+        .bill-container{
+          height:100%;
+          background-color: darkgray;
+          .bill{
+              text-align: left;
+              z-index: 1;
+              border: solid black 1px;
+              padding: 5px 5px 5px 15px;
+              width:100%;
+              .bill-name{
+                color: white;
+                padding: 20px 20px
+              }
+              .bill-not-paid{
+                color:brown;
+              }
+              .bill-paid{
+                color:green;
+              }
+          }
+          .new-bill-button{
+            a{
+              width:100%;
+              clear:left;
+            }
+            #bill-adder-wrapper{
+              .btn{
+                text-align: center;
+              }
+            }
+          }
+        }
       }
     }
   }
-
-}
-
-.header, .footer{
-  text-align: center;
-  border: 1px solid black;
-  box-shadow: 5px;
-  padding: 10px;
-  color: white;
-  background-color: grey;
 }
 
 

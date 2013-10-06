@@ -9,32 +9,39 @@
   position: relative;
   top: -15px; }
 
-.bill-container {
-  background-color: darkgray;
-  padding: 3px 3px; }
-  .bill-container .bill {
-    text-align: left;
-    z-index: 1;
-    border: solid black 1px;
-    padding: 5px 5px 5px 15px;
-    width: 100%; }
-    .bill-container .bill .bill-name {
-      color: white;
-      padding: 20px 20px; }
-    .bill-container .bill .bill-not-paid {
-      color: brown; }
-    .bill-container .bill .bill-paid {
-      color: green; }
-  .bill-container .new-bill-button a {
-    width: 100%;
-    clear: left; }
-  .bill-container .new-bill-button #bill-adder-wrapper .btn {
-    text-align: center; }
-
-.header, .footer {
-  text-align: center;
-  border: 1px solid black;
-  box-shadow: 5px;
-  padding: 10px;
-  color: white;
-  background-color: grey; }
+html {
+  height: 100%; }
+  html body {
+    height: calc(100% - 84px); }
+    html body .bill-checklist {
+      height: 100%; }
+      html body .bill-checklist #header, html body .bill-checklist #footer {
+        text-align: center;
+        border: 1px solid black;
+        box-shadow: 5px;
+        padding: 10px;
+        color: white;
+        background-color: grey; }
+      html body .bill-checklist #content {
+        height: 100%; }
+        html body .bill-checklist #content .bill-container {
+          height: 100%;
+          background-color: darkgray; }
+          html body .bill-checklist #content .bill-container .bill {
+            text-align: left;
+            z-index: 1;
+            border: solid black 1px;
+            padding: 5px 5px 5px 15px;
+            width: 100%; }
+            html body .bill-checklist #content .bill-container .bill .bill-name {
+              color: white;
+              padding: 20px 20px; }
+            html body .bill-checklist #content .bill-container .bill .bill-not-paid {
+              color: brown; }
+            html body .bill-checklist #content .bill-container .bill .bill-paid {
+              color: green; }
+          html body .bill-checklist #content .bill-container .new-bill-button a {
+            width: 100%;
+            clear: left; }
+          html body .bill-checklist #content .bill-container .new-bill-button #bill-adder-wrapper .btn {
+            text-align: center; }

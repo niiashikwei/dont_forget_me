@@ -4,6 +4,8 @@
         <title>Page Title</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
 
         <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap-theme.css" />
@@ -20,12 +22,12 @@
 
     <body>
 
-        <div class="header">
-            Monthly Bills
-        </div>
+        <div ng-app="billChecklist" class='bill-checklist'>
+            <div id="header">
+                Monthly Bills
+            </div>
 
-        <div ng-app="billChecklist">
-            <div ng-controller="billCtrl" triggerJQM>
+            <div ng-controller="billCtrl" id='content' triggerJQM>
                 <div class="bill-container">
                     <div data-role="fieldcontain">
                         <my-bills bills="getBills()" onDelete="deleteBill(id)"></my-bills>
@@ -46,10 +48,10 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer">
-            procrastination ==> fines + penalties ==> less money!
+            <div id="footer">
+                procrastination ==> fines + penalties ==> less money!
+            </div>
         </div>
 
     </body>
