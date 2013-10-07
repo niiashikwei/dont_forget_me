@@ -75,6 +75,15 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
       deleteAllBills:function (){
         bills = [];
         updateLocalStorage();
+      },
+
+      getControlsStyle:function (){
+        if(bills.length < 2){
+          return "display:none;"
+        }
+        else{
+          return "display:block"
+        }
       }
 
     };
@@ -165,6 +174,10 @@ angular.module('billChecklist', ['ui.bootstrap', 'LocalStorageModule'])
 
     $scope.deleteAllBills = function(){
       billsService.deleteAllBills();
+    };
+
+    $scope.getControlsStyle = function(){
+      return billsService.getControlsStyle();
     };
 
   }])

@@ -28,7 +28,7 @@
             </div>
 
             <div ng-controller="billCtrl" id='content' triggerJQM>
-                <span id='controls'>
+                <span id='controls' style="{{getControlsStyle()}}">
                     <a type="button" ng-click='resetAllBillsStatus()' id="reset" style='width:33%' class="btn btn-primary">reset all</a>
                     <a type="button" ng-click='setAllBillsPaid()' id="check-all" style='width:33%' class="btn btn-primary">check all</a>
                     <a type="button" ng-click='deleteAllBills()' id="delete-all" style='width:33%' class="btn btn-primary">delete all</a>
